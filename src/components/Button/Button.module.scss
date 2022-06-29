@@ -1,0 +1,29 @@
+@import '../../global.scss';
+
+.button {
+  border-radius: $borderRadiusSmall;
+
+  padding: 0.4rem 1.8rem;
+  margin: 2rem 0;
+  cursor: pointer;
+  text-decoration: none;
+  max-width: 400px; 
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  outline: none;
+
+  &.primary {
+    background-color: $smoothBlue;
+    color: $white;
+  }
+
+  &.secondary {
+    background-color: transparent;
+    color: $black;
+    border: 1px solid black;
+  }
+}

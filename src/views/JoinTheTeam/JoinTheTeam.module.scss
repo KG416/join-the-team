@@ -3,5 +3,35 @@
 .wrapper {
   display: flex;
   flex-direction: row;
-  
+  height: 100%;
+
+  // without this, wrapper won't inherit the 100% height of it's parent which has "min-height: 100vh"
+  position: absolute;
+
+  form {
+    max-width: 60%;
+    padding: 3rem;
+
+    @media (max-width: $mediumLargeScreen) {
+      padding: 1rem;
+    }
+
+    input[type='text'] {
+      width: 100%;
+      padding: 0.4rem;
+      margin: 0.2rem 0;
+    }
+
+    input[type='checkbox'] {
+      margin: 0.4rem 0.4rem 0.4rem 0;
+    }
+
+    .checkboxWrapper {
+      margin: 0.2rem 0;
+
+      .hiddenText {
+        color: white;
+      }
+    }
+  }
 }

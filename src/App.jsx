@@ -1,11 +1,11 @@
 import Container from './components/Container'
-import Register from './views/Register'
+import JoinTheTeam from './views/JoinTheTeam'
 
 const App = () => {
   return (
-    <div>
+    <div className='App'>
       <Container>
-        <Register />
+        <JoinTheTeam />
       </Container>
     </div>
   )
