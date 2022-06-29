@@ -1,25 +1,59 @@
+// libs
+import { useState, useEffect } from 'react'
+
+// style
 import styles from './JoinTheTeam.module.scss'
-import { useState } from 'react'
 
 // components
 import Header from '../../components/Header'
 import Button from '../../components/Button'
 
+// tjenare
+import { BASE_URL, ALL_MEMBERS } from '../../api/teamMembers'
+import { readTeamMembers/* , saveTeamMembers */ } from '../../api/localStorage'
+
 const JoinTheTeam = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [terms, setTerms] = useState(true)
+  const [teamMembers, setTeamMembers] = useState([])
+
+  useEffect(() => {}, [])
+
+  async function getTeamMembers() {
+    // from local storage
+    let teamMembersFromLocalStorage = await readTeamMembers()
+    if (!teamMembersFromLocalStorage) {
+      teamMembersFromLocalStorage = []
+    }
+
+    // from api
+    const res = await fetch(BASE_URL + ALL_MEMBERS)
+    if (!res.ok) return console.log("Couldn't fetch data from API")
+    const data = await res.json()
+    const teamMembersFromAPI = data?.team
+
+    setTeamMembers([...teamMembersFromAPI, ...teamMembersFromLocalStorage])
+  }
 
   function teamMemberSubmit(event) {
     event.preventDefault()
     if (!terms) return alert('You must agree to the terms')
 
+    // check if member exists in teamMembers -> return error
+
     // add member to LC
+    //saveTeamMembers()
+
+    getTeamMembers()
   }
 
   return (
     <div className={styles.wrapper}>
       <Header />
+
+      {/* TODO: remove later */}
+      {teamMembers && console.log(teamMembers)}
 
       <form onSubmit={teamMemberSubmit}>
         <h2>Register</h2>
@@ -67,7 +101,6 @@ const JoinTheTeam = () => {
         </div>
 
         <Button>I&apos;m in, sign me up!</Button>
-
       </form>
     </div>
   )

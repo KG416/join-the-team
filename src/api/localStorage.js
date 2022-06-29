@@ -3,7 +3,11 @@ async function save(collection, value) {
 }
 
 async function read(collection) {
-    return JSON.parse(window.localStorage.getItem(collection))
+    try {
+        return JSON.parse(window.localStorage.getItem(collection))
+    } catch {
+        console.log(`Couldn't find ${collection} in local storage`)
+    }
 }
 
 export async function readTeamMembers() {
