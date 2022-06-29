@@ -1,12 +1,12 @@
 import ComponentTemplate from './components/ComponentTemplate'
 import Container from './components/Container'
+import Register from './views/Register'
 
 const App = () => {
   return (
     <div>
       <Container>
-        <h1>APP</h1>
-        <br />
+        <Register />
         <ComponentTemplate />
       </Container>
     </div>

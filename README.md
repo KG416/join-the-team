@@ -1,44 +1,36 @@
-# 🍐 Karls React Template
-_updated 22-05-07_
+# Epiceros Test
+
+A test project assigned to me by a potential employer <br>
+
+_This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)_
 
 ## Prerequisites
 
-...
+- You need to have [node.js](https://nodejs.org/) installed
 
-## Installation
+## Installation / get this app up and running
 
 - Clone the repo
 - In a terminal, run `npm install`
-- To start the project in Development mode, run `npm run start`
+- To start the project in Development mode, run `npm start`
 - It is now running at http://localhost:3000/
 
 ## Available scripts / commands
 
 - `npm start` - Starts in development mode
 
-## Deployment
-
-...
-
-## Expected version control strategy
-
-...
-
 ## Styling
-- The CSS extension `SASS` is used in this project.
+- The CSS extension `SASS` is used in this project
 - Components and views have separate CSS files (modules) with locally scoped classes. _Please note that element selectors are not locally scoped._
-- The `global.scss` file contains global styles and variables.
-- The `index.scss` file contains default settings, fonts, accessibility etc.
-
-_**Global** = availabe accross the whole app_ <br>
-_**Scope** = a specific area/part of the app_
+- The `global.scss` file contains global styles and variables
+- The `index.scss` file contains default settings, fonts, accessibility etc
 
 ## Linting & code formatting
 
 [What is linting?](https://en.wikipedia.org/wiki/Lint_%28software%29) <br>
 [What is code formatting?](https://en.wikipedia.org/wiki/Prettyprint)
 
-In this project `eslint` is used for linting & `prettier` is used for code formatting.
+In this project `eslint` is used for linting & `prettier` is used for code formatting
 
 [Starting point for setup](https://dev.to/s2engineers/how-to-make-eslint-work-with-prettier-avoiding-conflicts-and-problems-57pi)
 
@@ -50,5 +42,3 @@ Code is organized into the following folders:
 - **components** - Reusable components, such as buttons
 - **utils** - Reusable functions, such as sorting
 - **assets** - Static binary assets such as sound and images
-
-## Inspiration
