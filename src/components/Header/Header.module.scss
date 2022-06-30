@@ -9,6 +9,12 @@
   h1 {
     display: flex;
     flex-direction: column;
+
+    @media (max-width: $mediumLargeScreen) {
+      span:not(:last-child) {
+        margin-right: 0.75rem;
+      }
+    }
   }
 
   @media (max-width: $mediumLargeScreen) {
@@ -20,6 +26,10 @@
     h1 {
       display: flex;
       flex-direction: row;
+    }
+
+    @media (max-width: $smallScreen) {
+      flex-direction: column;
     }
   }
 
