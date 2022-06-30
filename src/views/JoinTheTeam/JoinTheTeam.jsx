@@ -11,6 +11,7 @@ import Button from '../../components/Button'
 // api
 import { BASE_URL, ALL_MEMBERS } from '../../api/teamMembers'
 import { readTeamMembers, saveTeamMembers } from '../../api/localStorage'
+import mergeArrays from '../../utils/mergeArrays'
 
 const JoinTheTeam = () => {
   const [name, setName] = useState('')
@@ -18,30 +19,30 @@ const JoinTheTeam = () => {
   const [terms, setTerms] = useState(true)
   const [teamMembers, setTeamMembers] = useState([])
 
+  function resetForm() {
+    setName('')
+    setEmail('')
+    setTerms(true)
+  }
+
   async function getTeamMembers() {
     // read LC
-    let teamMembersFromLocalStorage = await readTeamMembers()
-    if (!teamMembersFromLocalStorage) {
-      teamMembersFromLocalStorage = []
+    let teamMembersLocalStorage = await readTeamMembers()
+    if (!teamMembersLocalStorage) {
+      teamMembersLocalStorage = []
     }
 
     // fetch API
     const res = await fetch(BASE_URL + ALL_MEMBERS)
     if (!res.ok) return console.log("Couldn't fetch data from API")
     const data = await res.json()
-    const teamMembersFromAPI = data?.team
+    const teamMembersAPI = data?.team
 
-    // TODO: turn into reusable fn that takes an infinite number of arrays a param
-    const onlyKeepUniqueMembers = [
-      ...new Set([...teamMembersFromLocalStorage, ...teamMembersFromAPI])
-    ]
-    const allTeamMembers = [...onlyKeepUniqueMembers]
+    const allTeamMembers = mergeArrays(teamMembersLocalStorage, teamMembersAPI)
 
     setTeamMembers(allTeamMembers)
     saveTeamMembers(allTeamMembers)
-    setName('')
-    setEmail('')
-    setTerms(true)
+    resetForm()
   }
 
   useEffect(() => {
@@ -51,24 +52,20 @@ const JoinTheTeam = () => {
   async function teamMemberSubmit(event) {
     event.preventDefault()
 
-    // agree to terms?
     if (!terms) return alert('You must agree to the terms')
 
-    // name exists?
     const currentTeamMembers = await readTeamMembers()
     const nameAlreadyExists = currentTeamMembers.includes(name)
     if (nameAlreadyExists) {
       alert(`A member named ${name} already exists. Enter a different name and try again`)
-      setName('')
-      setEmail('')
-      setTerms(true)
+      resetForm()
       return
     }
 
-    // add new member -> state + LC
     currentTeamMembers.push(name)
     setTeamMembers(currentTeamMembers)
     saveTeamMembers(currentTeamMembers)
+    resetForm()
   }
 
   return (
