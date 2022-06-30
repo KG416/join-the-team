@@ -8,9 +8,9 @@ import styles from './JoinTheTeam.module.scss'
 import Header from '../../components/Header'
 import Button from '../../components/Button'
 
-// tjenare
+// api
 import { BASE_URL, ALL_MEMBERS } from '../../api/teamMembers'
-import { readTeamMembers/* , saveTeamMembers */ } from '../../api/localStorage'
+import { readTeamMembers, saveTeamMembers } from '../../api/localStorage'
 
 const JoinTheTeam = () => {
   const [name, setName] = useState('')
@@ -18,42 +18,62 @@ const JoinTheTeam = () => {
   const [terms, setTerms] = useState(true)
   const [teamMembers, setTeamMembers] = useState([])
 
-  useEffect(() => {}, [])
-
   async function getTeamMembers() {
-    // from local storage
+    // read LC
     let teamMembersFromLocalStorage = await readTeamMembers()
     if (!teamMembersFromLocalStorage) {
       teamMembersFromLocalStorage = []
     }
 
-    // from api
+    // fetch API
     const res = await fetch(BASE_URL + ALL_MEMBERS)
     if (!res.ok) return console.log("Couldn't fetch data from API")
     const data = await res.json()
     const teamMembersFromAPI = data?.team
 
-    setTeamMembers([...teamMembersFromAPI, ...teamMembersFromLocalStorage])
+    // TODO: turn into reusable fn that takes an infinite number of arrays a param
+    const onlyKeepUniqueMembers = [
+      ...new Set([...teamMembersFromLocalStorage, ...teamMembersFromAPI])
+    ]
+    const allTeamMembers = [...onlyKeepUniqueMembers]
+
+    setTeamMembers(allTeamMembers)
+    saveTeamMembers(allTeamMembers)
+    setName('')
+    setEmail('')
+    setTerms(true)
   }
 
-  function teamMemberSubmit(event) {
+  useEffect(() => {
+    getTeamMembers()
+  }, [])
+
+  async function teamMemberSubmit(event) {
     event.preventDefault()
+
+    // agree to terms?
     if (!terms) return alert('You must agree to the terms')
 
-    // check if member exists in teamMembers -> return error
+    // name exists?
+    const currentTeamMembers = await readTeamMembers()
+    const nameAlreadyExists = currentTeamMembers.includes(name)
+    if (nameAlreadyExists) {
+      alert(`A member named ${name} already exists. Enter a different name and try again`)
+      setName('')
+      setEmail('')
+      setTerms(true)
+      return
+    }
 
-    // add member to LC
-    //saveTeamMembers()
-
-    getTeamMembers()
+    // add new member -> state + LC
+    currentTeamMembers.push(name)
+    setTeamMembers(currentTeamMembers)
+    saveTeamMembers(currentTeamMembers)
   }
 
   return (
     <div className={styles.wrapper}>
-      <Header />
-
-      {/* TODO: remove later */}
-      {teamMembers && console.log(teamMembers)}
+      <Header teamMembers={teamMembers} />
 
       <form onSubmit={teamMemberSubmit}>
         <h2>Register</h2>

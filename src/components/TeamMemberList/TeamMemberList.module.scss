@@ -1,5 +1,9 @@
 @import '../../global.scss';
 
-.wrapper {
-  background-color: $smoothBlue;
+.wrapperUL {
+  margin: 1rem 0;
+
+  li {
+    list-style-position: inside;
+  }
 }

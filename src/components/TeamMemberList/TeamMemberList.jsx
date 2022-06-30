@@ -1,12 +1,11 @@
 import styles from './TeamMemberList.module.scss'
-import TeamMemberItem from '../TeamMemberItem'
 
-const TeamMemberList = ({ teamMembers }) => {
-  return (
-    <ul className={styles.wrapper}>
-      <TeamMemberItem teamMembers={teamMembers}/>
-    </ul>
-  )
-}
+const TeamMemberList = ({ teamMembers }) => (
+  <ul className={styles.wrapperUL}>
+    {teamMembers.map((member) => (
+      <li key={member}>{member}</li>
+    ))}
+  </ul>
+)
 
 export default TeamMemberList

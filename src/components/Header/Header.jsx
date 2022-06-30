@@ -1,6 +1,7 @@
 import styles from './Header.module.scss'
+import TeamMemberList from '../TeamMemberList'
 
-const Header = () => {
+const Header = ({ teamMembers }) => {
   return (
     <header className={styles.wrapper}>
       <h1>
@@ -8,6 +9,8 @@ const Header = () => {
         <span>the</span>
         <span>team</span>
       </h1>
+
+      <TeamMemberList teamMembers={teamMembers} />
     </header>
   )
 }
