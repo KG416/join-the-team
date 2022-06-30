@@ -3,35 +3,45 @@
 .wrapper {
   display: flex;
   flex-direction: row;
-  height: 100%;
+  min-height: 100vh;
 
-  // without this, wrapper won't inherit the 100% height of it's parent which has "min-height: 100vh"
-  position: absolute;
+  @media (max-width: $mediumLargeScreen) {
+    flex-direction: column;
+  }
 
   form {
-    max-width: 60%;
-    padding: 3rem;
+    max-width: 32rem;
+    padding: 4rem 0 0 4rem;
 
     @media (max-width: $mediumLargeScreen) {
       padding: 1rem;
     }
 
     input[type='text'] {
+      font-size: 1rem;
       width: 100%;
       padding: 0.4rem;
-      margin: 0.2rem 0;
+      margin-top: 0.5rem;
+
+      &:last-child {
+        margin-bottom: 0.5rem;
+      }
     }
 
     input[type='checkbox'] {
-      margin: 0.4rem 0.4rem 0.4rem 0;
+      margin-right: 0.3rem;
     }
 
     .checkboxWrapper {
-      margin: 0.2rem 0;
+      margin: 1rem 0;
 
       .hiddenText {
         color: white;
       }
+    }
+
+    button {
+      margin-top: 1rem;
     }
   }
 }
