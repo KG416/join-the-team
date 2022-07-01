@@ -5,6 +5,7 @@
   color: $white;
   padding: 2rem 4rem;
   min-height: 100%;
+  max-width: 25vw;
 
   h1 {
     display: flex;
@@ -22,6 +23,7 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    max-width: unset;
 
     h1 {
       display: flex;
