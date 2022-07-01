@@ -25,10 +25,7 @@ _This project was bootstrapped with [Create React App](https://github.com/facebo
 - The `global.scss` file contains global styles and variables
 - The `index.scss` file contains default settings, fonts, accessibility etc
 
-## Linting & code formatting
-
-[What is linting?](https://en.wikipedia.org/wiki/Lint_%28software%29) <br>
-[What is code formatting?](https://en.wikipedia.org/wiki/Prettyprint)
+## [Linting](https://en.wikipedia.org/wiki/Lint_%28software%29) & code [formatting](https://en.wikipedia.org/wiki/Prettyprint)
 
 In this project `eslint` is used for linting & `prettier` is used for code formatting
 
