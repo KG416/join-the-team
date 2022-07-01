@@ -26,15 +26,12 @@ const JoinTheTeam = () => {
     setTerms(true)
   }
 
-  // TODO: move to it's own component?
   async function getTeamMembers() {
-    // read LC
     let teamMembersLocalStorage = await readTeamMembers()
     if (!teamMembersLocalStorage) {
       teamMembersLocalStorage = []
     }
 
-    // fetch API
     const res = await fetch(BASE_URL + ALL_MEMBERS)
     if (!res.ok) return console.log("Couldn't fetch data from API")
     const data = await res.json()
