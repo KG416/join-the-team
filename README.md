@@ -29,7 +29,7 @@ _This project was bootstrapped with [Create React App](https://github.com/facebo
 - The CSS extension [SASS](https://sass-lang.com/) is used in this project
 - Components and views have separate CSS files (modules) with locally scoped classes. _Please note that element selectors are not locally scoped._
 - The `global.scss` file contains global styles and variables
-- The `index.scss` file contains default settings, fonts, accessibility etc
+- The `index.scss` file contains default settings, fonts, etc
 
 ## [Linting](https://en.wikipedia.org/wiki/Lint_%28software%29) & [code formatting](https://en.wikipedia.org/wiki/Prettyprint)
 
