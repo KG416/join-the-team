@@ -1,6 +1,6 @@
 # Epiceros Test
 
-A test project assigned to me by a potential employer <br>
+A test project assigned to me by a potential future employer <br>
 
 _This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)_
 
@@ -12,7 +12,7 @@ _This project was bootstrapped with [Create React App](https://github.com/facebo
 
 - Clone the repo
 - In a terminal, run `npm install`
-- To start the project in Development mode, run `npm start`
+- To start the project in development mode, run `npm start`
 - It is now running at http://localhost:3000/
 
 ## Available scripts / commands
@@ -20,7 +20,7 @@ _This project was bootstrapped with [Create React App](https://github.com/facebo
 - `npm start` - Starts in development mode
 
 ## Styling
-- The CSS extension `SASS` is used in this project
+- The CSS extension [SASS](https://sass-lang.com/) is used in this project
 - Components and views have separate CSS files (modules) with locally scoped classes. _Please note that element selectors are not locally scoped._
 - The `global.scss` file contains global styles and variables
 - The `index.scss` file contains default settings, fonts, accessibility etc
@@ -41,4 +41,3 @@ Code is organized into the following folders:
 - **views** - The main view components, that make up the different complete views
 - **components** - Reusable components, such as buttons
 - **utils** - Reusable functions, such as sorting
-- **assets** - Static binary assets such as sound and images
