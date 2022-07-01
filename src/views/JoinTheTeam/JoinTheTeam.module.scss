@@ -40,8 +40,12 @@
       }
     }
 
-    button {
-      margin-top: 1rem;
+    .btnWrapper {
+      width: fit-content;
+
+      button {
+        margin-top: 1rem;
+      }
     }
   }
 }

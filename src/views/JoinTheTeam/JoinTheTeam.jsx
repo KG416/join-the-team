@@ -1,5 +1,6 @@
 // libs
 import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 
 // style
 import styles from './JoinTheTeam.module.scss'
@@ -25,6 +26,7 @@ const JoinTheTeam = () => {
     setTerms(true)
   }
 
+  // TODO: move to it's own component?
   async function getTeamMembers() {
     // read LC
     let teamMembersLocalStorage = await readTeamMembers()
@@ -117,7 +119,12 @@ const JoinTheTeam = () => {
           </label>
         </div>
 
-        <Button>I&apos;m in, sign me up!</Button>
+        <motion.div
+          className={styles.btnWrapper}
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.25 }}>
+          <Button>I&apos;m in, sign me up!</Button>
+        </motion.div>
       </form>
     </div>
   )
