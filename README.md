@@ -1,4 +1,4 @@
-# Epiceros Test
+# Join the team
 
 A test project assigned to me by a potential future employer <br>
 
