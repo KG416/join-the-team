@@ -40,4 +40,4 @@ Code is organized into the following folders:
 
 - **views** - The main view components, that make up the different complete views
 - **components** - Reusable components, such as buttons
-- **utils** - Reusable functions, such as sorting
+- **utils** - Reusable functions
