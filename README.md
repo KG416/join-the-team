@@ -19,6 +19,12 @@ _This project was bootstrapped with [Create React App](https://github.com/facebo
 
 - `npm start` - Starts in development mode
 
+## Features
+
+- **Add a team member** - fill out the form and submit to add a member to the list
+
+- **Data storage** - the initial list of team members is fetched from an API but all members (including the ones you add via the form) is saved in [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). This means the team member list will persist even if you refresh the page.
+
 ## Styling
 - The CSS extension [SASS](https://sass-lang.com/) is used in this project
 - Components and views have separate CSS files (modules) with locally scoped classes. _Please note that element selectors are not locally scoped._
